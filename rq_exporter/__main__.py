@@ -22,6 +22,7 @@ import signal
 import time
 import logging
 import argparse
+import custom
 
 from prometheus_client import start_wsgi_server
 from prometheus_client.core import REGISTRY
@@ -200,8 +201,8 @@ def main():
             password_file = args.redis_pass_file
         )
 
-        worker_class = import_attribute(args.worker_class)
-        queue_class = import_attribute(args.queue_class)
+        worker_class = custom.CustomWorker
+        queue_class = custom.CustomQueue
 
         # Register the RQ collector
         # The `collect` method is called on registration
