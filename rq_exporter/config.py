@@ -5,6 +5,7 @@ RQ exporter configuration.
 
 import os
 from rq.defaults import DEFAULT_QUEUE_CLASS, DEFAULT_WORKER_CLASS
+import custom
 
 
 # Defaults
@@ -21,8 +22,8 @@ DEFAULT_LOG_FORMAT = '[%(asctime)s] [%(name)s] [%(levelname)s]: %(message)s'
 DEFAULT_LOG_DATEFMT = '%Y-%m-%d %H:%M:%S'
 
 # RQ classes
-RQ_WORKER_CLASS = os.environ.get('RQ_WORKER_CLASS', DEFAULT_WORKER_CLASS)
-RQ_QUEUE_CLASS = os.environ.get('RQ_QUEUE_CLASS', DEFAULT_QUEUE_CLASS)
+RQ_WORKER_CLASS = custom.CustomWorker
+RQ_QUEUE_CLASS = custom.CustomQueue
 
 # Exporter config
 HOST = os.environ.get('RQ_EXPORTER_HOST', DEFAULT_HOST)
